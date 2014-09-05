@@ -11,7 +11,7 @@ import "github.com/henriklundgren/leapyear"
 
 func main() {
   year := 2012 // Year to test
-  isLeapYearOrNot := leapyear.IsLeapYear(year) // Returns false or true
+  isLeapYearOrNot, err := leapyear.IsLeapYear(year) // Returns false or true
 }
 ```
 

@@ -15,15 +15,20 @@ func Test_IsFloat(t *testing.T) {
   }
 }
 
+// Test error checking
+func Test_IsLeapYear_0(t *testing.T) {
+  if _, err := IsLeapYear(1207); err == nil {
+    t.Error("Should return error.")
+  }
+}
+
 // Test if (known beforehand) leapyears return true
 func Test_IsLeapYear_1(t *testing.T) {
 
-  i := 0
-  for i <= len(leaps)-1 {
-    if IsLeapYear(float64(leaps[i])) == false {
+  for i := 0; i <= len(leaps)-1; i++ {
+    if tt, _ := IsLeapYear(float64(leaps[i])); tt == false {
       t.Error("Known leapyear returns error.")
     }
-    i = i + 1
   }
 }
 
@@ -34,7 +39,7 @@ func Test_IsLeapYear_2(t *testing.T) {
   // Known commonyear
   commonyear := 2014
 
-  if IsLeapYear(float64(commonyear)) == true {
+  if tt, _ := IsLeapYear(float64(commonyear)); tt == true {
     t.Error("Known commonyear returns error.")
   }
 }
